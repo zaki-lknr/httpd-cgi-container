@@ -1,0 +1,14 @@
+# docker run --name httpd -d \
+# -v ~/local/src:/usr/local/apache2/htdocs/ \
+# -v ./httpd.conf:/usr/local/apache2/conf/httpd.conf \
+# -p 8080:80 httpd
+
+services:
+  httpd:
+    image: httpd
+    ports:
+    - 8080:80
+    volumes:
+    - ~/local/src:/usr/local/apache2/htdocs/
+    - ./httpd.conf:/usr/local/apache2/conf/httpd.conf
+
