@@ -15,4 +15,8 @@ services:
   perlhttpd:
     image: httpd-cgi:latest
     build: ./image-src
-
+    ports:
+    - 8081:80
+    volumes:
+    - ~/local/src:/usr/local/apache2/htdocs/
+    - ./httpd.conf:/usr/local/apache2/conf/httpd.conf
