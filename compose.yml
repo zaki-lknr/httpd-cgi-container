@@ -8,15 +8,21 @@ services:
     image: httpd
     ports:
     - 8080:80
+    - 8443:443
     volumes:
     - ~/local/src:/usr/local/apache2/htdocs/
     - ./httpd.conf:/usr/local/apache2/conf/httpd.conf
+    - ./server.crt:/usr/local/apache2/conf/server.crt
+    - ./server.key:/usr/local/apache2/conf/server.key
 
   perlhttpd:
     image: httpd-cgi:latest
     build: ./image-src
     ports:
     - 8081:80
+    - 8444:443
     volumes:
     - ~/local/src:/usr/local/apache2/htdocs/
     - ./httpd.conf:/usr/local/apache2/conf/httpd.conf
+    - ./server.crt:/usr/local/apache2/conf/server.crt
+    - ./server.key:/usr/local/apache2/conf/server.key
